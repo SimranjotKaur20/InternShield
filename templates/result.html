@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+    <div class="nav-logo">InternShield 🚨</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/scanner">Scanner</a>
+        <a href="/awareness">Awareness</a>
+    </div>
+</nav>
+    <div class="container">
+
+        <h1>InternShield Analysis Report</h1>
+
+        <div class="result-card">
+
+            <div class="risk-badge 
+                {% if risk == 'Low Risk' %}
+                    safe
+                {% elif risk == 'Suspicious' %}
+                    warning
+                {% else %}
+                    danger
+                {% endif %}
+            ">
+                {{ risk }}
+            </div>
+
+            <h2>Scam Probability: {{ score }}%</h2>
+
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+
+            <script>
+                document.getElementById("progressBar").style.width = "{{ score }}%";
+            </script>
+            <div class="meter">
+    <div class="meter-fill" id="meterFill"></div>
+</div>
+
+            <div class="analysis-section">
+                <h3>Detected Indicators</h3>
+
+                {% if explanation %}
+<h3 style="margin-top:25px;">Why This Might Be a Scam</h3>
+<ul>
+    {% for reason in explanation %}
+        <li>{{ reason }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+                {% if keywords %}
+                    <ul>
+                        {% for word in keywords %}
+                            <li>{{ word }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No suspicious indicators found.</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <br>
+
+<p style="margin-top:20px;">
+If you believe this internship offer is fraudulent,
+please report it to the official Government Cyber Crime Portal.
+</p>
+
+<a href="https://cybercrime.gov.in" target="_blank" class="report-btn">
+🚨 Report this Scam to Cyber Crime Portal
+</a>
+
+<br><br>
+
+<a href="/" class="back-btn">Analyze Another Offer</a>
+        <form action="/download_report" method="POST">
+    <input type="hidden" name="score" value="{{ score }}">
+    <input type="hidden" name="risk" value="{{ risk }}">
+
+    {% for word in keywords %}
+        <input type="hidden" name="keywords" value="{{ word }}">
+    {% endfor %}
+
+    {% for reason in explanation %}
+        <input type="hidden" name="explanation" value="{{ reason }}">
+    {% endfor %}
+
+    <button type="submit" class="download-btn">Download PDF Report</button>
+</form>
+
+    </div>
+    <h3>Domain Intelligence</h3>
+<ul>
+{% for d in domain_details %}
+<li>{{ d }}</li>
+{% endfor %}
+</ul>
+    <h3>Website Safety:
+{% if score > 70 %}
+🔴 Dangerous
+{% elif score > 40 %}
+🟠 Suspicious
+{% else %}
+🟢 Safe
+{% endif %}
+</h3>
+</body>
+</html>

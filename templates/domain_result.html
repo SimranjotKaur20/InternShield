@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Domain Result</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="result-container">
+
+<h1>🌐 Domain Intelligence Result</h1>
+
+<div class="verdict-badge {{ verdict_color }}">
+    {{ verdict }}
+</div>
+
+<p><b>Domain:</b> {{ domain }}</p>
+
+<p><b>Domain Age:</b> {{ domain_age }}</p>
+
+<p><b>Phishing Risk:</b> {{ phishing }}</p>
+
+<p><b>Malware Risk:</b> {{ malware }}</p>
+
+<p><b>Suspicious Domain:</b> {{ suspicious }}</p>
+
+<a class="back-btn" href="/domain">Check Another Domain</a>
+
+</div>
+
+</body>
+</html>

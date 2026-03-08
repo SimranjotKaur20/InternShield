@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InternShield - AI Scam Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+
+<div class="logo">
+🛡 InternShield
+</div>
+
+<ul class="nav-links">
+
+<li><a href="/">Dashboard</a></li>
+
+<li><a href="/scanner">Scan Offer</a></li>
+
+<li><a href="/domain">Domain Check</a></li>
+
+<li><a href="/awareness">Awareness</a></li>
+
+<li><a href="https://cybercrime.gov.in" target="_blank">Report Scam</a></li>
+
+<li><a href="/about">About</a></li>
+
+</ul>
+
+</nav>
+    <div class="container">
+
+        <h1>InternShield 🚨</h1>
+        <p class="subtitle">
+            AI-Powered Internship & Offer Letter Scam Detection
+        </p>
+
+        <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+            <label class="label">Paste Offer Letter / Email Content</label>
+
+            <textarea 
+                name="content" 
+                placeholder="Paste the full internship email or offer letter here..."
+            ></textarea>
+            <label class="label">Paste Suspicious Website Link</label>
+<input type="text" name="url_input" placeholder="https://example.com/internship-offer">
+
+            <div class="divider">OR</div>
+
+            <label class="upload-box">
+                📄 Upload Offer Letter PDF
+                <input type="file" name="pdf_file" accept=".pdf" multiple>
+            </label>
+
+            <button type="submit" class="analyze-btn">
+                Analyze Now
+            </button>
+
+        </form>
+
+    </div>
+</body>
+</html>

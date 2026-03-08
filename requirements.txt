@@ -1,0 +1,6 @@
+Flask
+requests
+PyPDF2
+python-whois
+reportlab
+gunicorn

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Domain Intelligence</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="domain-container">
+
+<h1>🌐 Domain Intelligence</h1>
+<p>Check domain reputation and security risk.</p>
+
+<form action="/check_domain" method="POST" class="domain-form">
+
+<input type="text" name="domain" placeholder="Enter domain (example.com)" required>
+
+<button type="submit">Check Domain</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
